@@ -1,4 +1,4 @@
-import PayoutHistoryArgs from "types/PayoutHistory/ApiArgs";
+import PayoutHistoryArguments from "types/PayoutHistory/ApiArguments";
 import { getWithCancelToken } from "services/httpService";
 
 export const getPayoutHistory = <T>({
@@ -6,10 +6,10 @@ export const getPayoutHistory = <T>({
   searchedValue,
   cancelToken,
   setCancelToken,
-}: PayoutHistoryArgs) => {
+}: PayoutHistoryArguments) => {
   const url = searchedValue.length
     ? `/search?query=${searchedValue}`
     : `/payouts?page=${page}`;
 
-  return getWithCancelToken<T>(url, cancelToken, setCancelToken);
+  return getWithCancelToken<T>({ url, cancelToken, setCancelToken });
 };

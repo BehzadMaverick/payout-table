@@ -13,7 +13,7 @@ import { getProperty } from "utils/getProperty";
 import { ITEMS_PER_PAGE } from "constants/index";
 
 type TableProps<T> = {
-  tableHeader: HeadCells[];
+  tableHeader: HeadCells<T>[];
   tableData: T[];
   currentPage: number;
   totalPages: number;
@@ -37,8 +37,8 @@ const Table = <T,>({
     ? tableData.slice(indexOfFirstItem, indexOfLastItem)
     : tableData;
 
-  const getTableCellComponent = useCallback((tableHead: HeadCells, item: T) => {
-    const key = (tableHead?.key || tableHead.label.toLowerCase()) as string;
+  const getTableCellComponent = useCallback((tableHead: HeadCells<T>, item: T) => {
+    const key = (tableHead?.key || tableHead.label.toLowerCase());
     let value = getProperty(item, key as keyof T) as string;
 
     if (tableHead.render) {

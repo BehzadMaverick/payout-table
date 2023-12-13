@@ -1,6 +1,6 @@
 import axios, { AxiosResponse, CancelTokenSource, AxiosError } from "axios";
 
-import CancelTokenType from "types/CancelToken";
+import GetRequestCancelTokenArguments from "types/GetRequestCancelTokenArguments";
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -9,21 +9,21 @@ const axiosInstance = axios.create({
   },
 });
 
-export const getWithCancelToken = <T>(
-  url: string,
-  cancelToken: CancelTokenType,
-  setCancelToken: (source: CancelTokenSource) => void
-): Promise<AxiosResponse<T>> => {
+export const getWithCancelToken = <T>({
+  url,
+  cancelToken,
+  setCancelToken,
+}: GetRequestCancelTokenArguments): Promise<AxiosResponse<T>> => {
   if (cancelToken) cancelToken.cancel("Cancelled Request");
 
   const source = CancelToken.source();
   setCancelToken(source);
 
-  const promise: Promise<AxiosResponse<T>> = axiosInstance.get(url, {
+  const request: Promise<AxiosResponse<T>> = axiosInstance.get(url, {
     cancelToken: source?.token,
   });
 
-  return promise;
+  return request;
 };
 
 export default axiosInstance;

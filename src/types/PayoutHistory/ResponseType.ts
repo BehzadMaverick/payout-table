@@ -1,6 +1,6 @@
-import PayoutHistoryApiType from "types/PayoutHistory/ApiType";
+import PayoutHistoryApi from "types/PayoutHistory/ApiType";
 import PayoutHistoryItem from "types/PayoutHistory/Item";
 
-type ResponseType = PayoutHistoryApiType | PayoutHistoryItem[];
+type PayoutHistoryResponse = PayoutHistoryApi | PayoutHistoryItem[];
 
-export default ResponseType;
+export default PayoutHistoryResponse;

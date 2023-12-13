@@ -41,6 +41,7 @@ export const UsernameValueSpan = styled(TableCellSpan)`
 
 export const DateSpan = styled(TableCellSpan)`
   color: ${({ theme }) => theme.colors.tableHeader};
+
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     display: block;
     width: ${({ theme }) => `${theme.spacing(14)}`};

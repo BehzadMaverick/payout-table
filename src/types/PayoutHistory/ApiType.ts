@@ -1,6 +1,6 @@
 import PayoutHistoryItem from "types/PayoutHistory/Item";
 
-type PayoutHistoryApiType = {
+type PayoutHistoryApi = {
   metadata: {
     page: number;
     limit: number;
@@ -9,4 +9,4 @@ type PayoutHistoryApiType = {
   data: PayoutHistoryItem[];
 }
 
-export default PayoutHistoryApiType;
+export default PayoutHistoryApi;

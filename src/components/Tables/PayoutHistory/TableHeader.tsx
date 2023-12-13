@@ -12,7 +12,7 @@ import { PAID_STATUS } from "constants/index";
 import { formatDate } from "utils/formatDate";
 
 const useTableHeader = () => {
-  const tableHeader: HeadCells[] = useMemo(
+  const tableHeader: HeadCells<PayoutHistoryItem>[] = useMemo(
     () => [
       {
         label: "Username",
@@ -24,9 +24,7 @@ const useTableHeader = () => {
         label: "Date & Time",
         key: "dateAndTime",
         render: (item: PayoutHistoryItem) => (
-          <DateSpan>
-            {formatDate(item.dateAndTime)}
-          </DateSpan>
+          <DateSpan>{formatDate(item.dateAndTime)}</DateSpan>
         ),
       },
       {

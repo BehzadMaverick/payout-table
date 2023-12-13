@@ -1,7 +1,13 @@
 export const ITEMS_PER_PAGE = 10;
+
 export const SUCCESSFUL_RESPONSE = 200;
+
 export const PAID_STATUS = ["completed", "paid"];
+
 export const SPACING = 8;
+
+export const MAX_VISIBLE_PAGES = 5;
+
 export const STATUS_CODES: { [key: number]: string } = {
   401: "Unauthorized",
   404: "Resource Not Found",

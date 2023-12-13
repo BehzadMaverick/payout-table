@@ -1,7 +1,7 @@
-type HeadCells = {
+type HeadCells<T> = {
   label: string;
   key?: string;
-  render?: (item: any) => JSX.Element;
+  render?: (item: T) => JSX.Element;
 };
 
 export default HeadCells;

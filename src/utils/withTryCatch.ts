@@ -8,14 +8,14 @@ type withTryCatchType<T> = {
   getData: () => Promise<AxiosResponse<T>> | undefined;
   onSuccess: (data: T) => void;
   onFailure?: (error: AxiosError) => void;
-  finallyFunc?: () => void;
+  onSettled?: () => void;
 };
 
 export const withTryCatch = async <T>({
   getData,
   onSuccess,
   onFailure,
-  finallyFunc,
+  onSettled,
 }: withTryCatchType<T>): Promise<void> => {
   try {
     const response = await getData();
@@ -43,6 +43,6 @@ export const withTryCatch = async <T>({
       }
     }
   } finally {
-    finallyFunc?.();
+    onSettled?.();
   }
 };

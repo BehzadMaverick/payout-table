@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
+import { MAX_VISIBLE_PAGES } from "constants/index";
 import {
   PaginationContainer,
   PageButton,
@@ -20,14 +21,13 @@ const Pagination = ({
   const [visiblePages, setVisiblePages] = useState<number[]>([]);
 
   const updateVisiblePages = useCallback(() => {
-    const maxVisiblePages = 5;
-    const halfVisiblePages = Math.floor(maxVisiblePages / 2);
+    const halfVisiblePages = Math.floor(MAX_VISIBLE_PAGES / 2);
 
     let startPage = Math.max(1, currentPage - halfVisiblePages);
-    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    let endPage = Math.min(totalPages, startPage + MAX_VISIBLE_PAGES - 1);
 
-    if (endPage - startPage + 1 < maxVisiblePages) {
-      startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    if (endPage - startPage + 1 < MAX_VISIBLE_PAGES) {
+      startPage = Math.max(1, endPage - MAX_VISIBLE_PAGES + 1);
     }
 
     const pages = Array.from(
