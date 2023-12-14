@@ -75,15 +75,19 @@ export const PageButton = styled.button<{ isActive?: boolean }>`
   margin: ${({ theme }) => `0 ${theme.spacing(0.5)}`};
   cursor: pointer;
   border: none;
-  background-color: ${(props) =>
-    props.isActive ? props.theme.colors.primary : "transparent"};
-  color: ${(props) =>
-    props.isActive ? props.theme.colors.white : props.theme.colors.black};
+  background-color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.primary : "transparent"};
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.white : theme.colors.black};
   border-radius: ${({ theme }) => `${theme.spacing(0.5)}`};
 
   &:hover {
-    background-color: ${(props) =>
-      props.isActive ? props.theme.colors.primary : props.theme.colors.grey};
+    background-color: ${({ theme, isActive }) =>
+      isActive ? theme.colors.primary : theme.colors.grey};
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: transparent;
   }
 `;
 
